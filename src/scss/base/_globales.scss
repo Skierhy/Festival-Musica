@@ -1,77 +1,75 @@
-@use "variables"as var;
+@use "variables" as var;
 
-// usar siempre aqui hasta...
+// usar siempre aquí hasta...
 html {
-    // uso de rem =10px
-    font-size: 62.5%;
-    box-sizing: border-box;
+	// uso de rem =10px
+	font-size: 62.5%;
+	box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
 
-// .... aqui
+// .... aquí
 
 body {
-    font-family: var.$fuente_principal;
-    font-size: 1.6rem;
+	font-family: var.$fuente_principal;
+	font-size: 1.6rem;
 
-    // este es como un if si esta presente
-    // esta clase lo que hara es fijar 
-    &.fijar-body {
-        // para que no se pueda dar scrolll
-        overflow: hidden;
-    }
+	// este es como un if si esta presente
+	// esta clase lo que hará es fijar
+	&.fijar-body {
+		// para que no se pueda dar scrolll
+		overflow: hidden;
+	}
 
-    &.body-scroll {
-        // debe que tener el mismo tamano que la barra
-        padding-top:8.6rem;
-    }
+	&.body-scroll {
+		// debe que tener el mismo tamaño que la barra
+		padding-top: 8.6rem;
+	}
 }
 
 p {
-    font-size: 2rem;
-    color: var.$negro;
-    line-height: 1.5;
+	font-size: 2rem;
+	color: var.$negro;
+	line-height: 1.5;
 }
 
-
-
 .contenedor {
-    width: 95%;
-    max-width: 120rem;
-    margin: 0 auto;
+	width: 95%;
+	max-width: 120rem;
+	margin: 0 auto;
 }
 
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 h1,
 h2,
 h3 {
-    margin: 0 0 5rem 0;
+	margin: 0 0 5rem 0;
 }
 
 h1 {
-    font-size: 4rem;
+	font-size: 4rem;
 }
 
 h2 {
-    font-size: 3.6rem;
+	font-size: 3.6rem;
 }
 
 h3 {
-    font-size: 3rem;
+	font-size: 3rem;
 }
 
 img {
-    // para ajustar las imágenes
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    display: block;
+	// para ajustar las imágenes
+	max-width: 100%;
+	width: 100%;
+	height: auto;
+	display: block;
 }

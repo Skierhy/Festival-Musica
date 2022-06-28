@@ -60,7 +60,7 @@ function css(done) {
 	// pipe lo que hace manda a llamar la siguiente acción
 
 	// para que escuche todos los cambios que se haga en cualquier cualquier archivo
-	// se hara de manera recursiva
+	// se hará de manera recursiva
 	src("src/scss/**/*.scss")
 		// sourcemaps
 		.pipe(sourcemaps.init())
@@ -126,7 +126,7 @@ function javascript(done) {
 // para usar el watch en pocas palabras cuando modifiques el archivo
 // scss se compila automáticamente
 function dev1(done) {
-	// ubicacion , función a ejecutar
+	// ubicación , función a ejecutar
 	watch("src/scss/**/*.scss", css);
 	watch("src/js/**/*.js", javascript);
 	done();

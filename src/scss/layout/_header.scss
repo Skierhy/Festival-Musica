@@ -2,56 +2,56 @@
 @use "base/mixins" as m;
 
 .header {
-  background-color: var.$verde;
-  @include m.tablet {
-    &.fijo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      box-shadow: 0.1rem 0.2rem 0.1rem 0.1rem #333333;
-    }
-  }
-  h1 {
-    color: var.$blanco;
-    text-align: center;
-    @include m.tablet {
-      margin: 0;
-    }
-  }
-  .contenido-header {
-    padding: 2rem;
-    @include m.tablet {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
+	background-color: var.$verde;
+	@include m.tablet {
+		&.fijo {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			box-shadow: 0.1rem 0.2rem 0.1rem 0.1rem #333333;
+		}
+	}
+	h1 {
+		color: var.$blanco;
+		text-align: center;
+		@include m.tablet {
+			margin: 0;
+		}
+	}
+	.contenido-header {
+		padding: 2rem;
+		@include m.tablet {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
 }
 
 .navegacion-principal {
-  @include m.tablet {
-    display: flex;
-    gap: 2rem;
-  }
-  a {
-    display: block;
-    text-align: center;
-    color: var.$blanco;
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
-    @include m.tablet {
-      margin: 0;
-    }
+	@include m.tablet {
+		display: flex;
+		gap: 2rem;
+	}
+	a {
+		display: block;
+		text-align: center;
+		color: var.$blanco;
+		font-size: 2.4rem;
+		margin-bottom: 1rem;
+		@include m.tablet {
+			margin: 0;
+		}
 
-    // para usar hover dentro de la anidacion
-    &:hover {
-      color: var.$amarillo;
-    }
-  }
+		// para usar hover dentro de la anidación
+		&:hover {
+			color: var.$amarillo;
+		}
+	}
 }
 
 // .prueba (var.$amarillo,  true) {
-//     // asi se usan los mixins y se puede decir es como resutilizar codigo rapido y facil
+//     // asi se usan los mixins y se puede decir es como reutilizar código rápido y fácil
 //     // @include m.heading(var.$amarillo, true);
 // }

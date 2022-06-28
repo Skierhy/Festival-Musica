@@ -1,63 +1,66 @@
-@use 'base/mixins' as m;
-@use 'base/variables' as var;
+@use "base/mixins" as m;
+@use "base/variables" as var;
 
 .video {
-    // para poder encimar
-    position: relative;
-    // para que no crezca asi abajo el video
-    max-height: 70rem;
-    min-height: 50rem;
-    // para que el gradiente se muestre bien
-    overflow: hidden;
-    .overlay {
-        position: absolute;
-        background: rgb(165,3,255);
-        background: linear-gradient(270deg, rgba(165,3,255,0.5) 0%, rgba(255,0,110,0.5) 100%);
-        height: 100%;
-        width: 100%;
-        // posicionar las letras
-        display: flex;
-        // para alinear vertical
-        // por que default es de izquieda a derecha
-        flex-direction: column;
-        justify-content: center;
-    }
-    video {
-        width: auto;
-        // se desborda un poco para solucionar eso
-        // es una linea
-        display: block;
+	// para poder encimar
+	position: relative;
+	// para que no crezca asi abajo el video
+	max-height: 70rem;
+	min-height: 50rem;
+	// para que el gradiente se muestre bien
+	overflow: hidden;
+	.overlay {
+		position: absolute;
+		background: rgb(165, 3, 255);
+		background: linear-gradient(
+			270deg,
+			rgba(165, 3, 255, 0.5) 0%,
+			rgba(255, 0, 110, 0.5) 100%
+		);
+		height: 100%;
+		width: 100%;
+		// posicionar las letras
+		display: flex;
+		// para alinear vertical
+		// por que default es de izquierda a derecha
+		flex-direction: column;
+		justify-content: center;
+	}
+	video {
+		width: auto;
+		// se desborda un poco para solucionar eso
+		// es una linea
+		display: block;
 
-        @include m.desktop {
-            // toma todo la pantalla
-            width: 100%;
-        }
-    }
+		@include m.desktop {
+			// toma todo la pantalla
+			width: 100%;
+		}
+	}
 }
 
-
 .contenido-video {
-    // para que esta capa este primero
-    // y se puede seleccionar
-    // como se fuera hojas
-    // esto pasa cuando usas la posiciones
-    // relativas y absolutas
-    z-index: 1;
-    h2{
-        color: var.$blanco;
-        font-size: 7rem;
-        margin: 0;
-    }
-    p {
-        background-color: var.$rosa;
-        color: var.$blanco;
+	// para que esta capa este primero
+	// y se puede seleccionar
+	// como se fuera hojas
+	// esto pasa cuando usas la posiciones
+	// relativas y absolutas
+	z-index: 1;
+	h2 {
+		color: var.$blanco;
+		font-size: 7rem;
+		margin: 0;
+	}
+	p {
+		background-color: var.$rosa;
+		color: var.$blanco;
 
-        // si hay mas cosas a lado de el no se tomara en el
-        // solamente ocupa lo que debe que usar
-        display: inline-block;
-        padding: 1rem 2rem;
-        font-weight: 700;
-        font-size: 2.4rem;
-        margin: 0;
-    }
+		// si hay mas cosas a lado de el no se tomara en el
+		// solamente ocupa lo que debe que usar
+		display: inline-block;
+		padding: 1rem 2rem;
+		font-weight: 700;
+		font-size: 2.4rem;
+		margin: 0;
+	}
 }
