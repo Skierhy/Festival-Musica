@@ -1,0 +1,19 @@
+// para saber que existe _variables.scss
+// no importa si no tiene el _ ya sabe cual es el que se integra
+// a el
+
+// TODO: ES IMPORTANTE IMPORTA LAS VARIABLES PRIMERO
+// @import "base/variables";
+// @import "contenido/contenido";
+
+// body {
+//   background-color: $rojo;
+// }
+
+// NUEVA FORMA
+// import lo que hace apunta a donde esta los archivos
+// use lo compila
+// para evitar que se deje de ejecutar el programa
+// npm i --save-dev gulp-plumber
+@use "base";
+@use "layout";

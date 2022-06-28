@@ -1,0 +1,13 @@
+se elimina:
+    node_modules
+    package-lock.json
+
+
+No se sube:
+
+    gulpfile.js
+    src
+    package.json 
+
+
+Deployment

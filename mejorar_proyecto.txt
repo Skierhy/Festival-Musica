@@ -1,0 +1,55 @@
+Para mejorar el proyecto
+
+modificar el código css
+
+eliminar espacios
+autofixed
+css nano (compresión css)
+
+npm i --save-dev cssnano autoprefixer postcss gulp-postcss
+
+
+
+// mejorar código css
+// no usa gulp usa postcss
+// este lo que hace hace que funcione en el navegador que tu digas
+// usa las ultimas tecnologías y tal vez no funcione en otros navegadores viejos
+const autoprefixer = require('autoprefixer');
+// comprime el código
+const cssnano = require('cssnano');
+const postcss = require('gulp-postcss');
+
+
+function css(done) {
+    // identificar el archivo .scss a compilar
+    // pipe lo que hace manda a llamar la siguiente acción
+
+
+    // para que escuche todos los cambios que se haga en cualquier cualquier archivo
+    // se hará de manera recursiva
+    src('src/scss/**/*.scss')
+        .pipe(plumber())
+        .pipe(sass()) // compilarlo
+        ///////////////////////////////////////////
+        // mejorar de css
+        .pipe( postcss([autoprefixer(), cssnano()]))
+        .pipe(dest('build/css')) // almacenar
+    done();
+}
+
+
+como el se uso cssnano entonces todas la lineas sera la linea 1 no podemos saber en que linea es
+
+entonces usaremos un sourcemaps
+
+
+npm i --save-dev gulp-sourcemaps
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+mejorar en javascript
+
+con terser
+
+npm i --save-dev gulp-terser-js

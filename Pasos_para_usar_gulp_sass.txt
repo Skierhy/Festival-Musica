@@ -1,0 +1,246 @@
+WINDOWS
+
+primero instalamos el software node.js
+
+https://nodejs.org/es/
+
+recomendable la LTS
+NOTA: también debe que estar marcada add to path
+también marcamos "automatically install the necessary tools"
+todo le damos si
+
+NOTA: se recomienda powershell
+
+para saber si esta bien instalado lo que hare sera: node -v
+                                                    npm -v
+
+este viene incluido el npm:
+npm es el sistema de gestión de paquetes por defecto
+para Node.js, un entorno de ejecución para JavaScript, bajo Artistic License 2.0
+
+
+
+instalar gulp
+para saber si tenemos esto
+node --version
+npm --version
+npx --version
+
+
+ingresamos esto también en powershell
+
+npm install --global gulp-cli
+
+
+comprobar: gulp -v
+
+
+para cada proyecto se necesita una copia local
+
+error
+
+    1.- como administrador
+    2.- script error  Get-ExecutionPolicy -list
+                      Set-ExecutionPolicy RemoteSigned -scope LocalMachine
+                      le damos si a todo
+    3. antivirus desactivar
+
+
+CREACIÓN DEL PROYECTO
+
+Tener una carpeta donde quieres
+
+terminal abrimos vs studio code
+    1. npm init
+    2. nombre de paquete: podemos dejarlo como aparece la carpeta o cambiarlo
+    3. version: podemos dejarlo como aparece la carpeta o cambiarlo
+    4. descripción: dependiendo
+    4. entry point: lo dejamos asi
+    5. test command: lo dejamos asi
+    6. git repository: si estamos almacenando tus proyectos en un repositorio
+    7. keywords: depende
+    8. author: mi nombre
+    9. licese: lo dejamos asi
+    10. si esta todo bien escribimos yes
+
+json sirve para ejecutar comandos npm, dependencias de npm
+
+
+instalado sass con npm
+
+comando
+    dependencia normal
+    npm install sass
+
+
+    existe dos tipos de dependencias
+
+        dependencias cuando se hace un deploy se puede decir lanzarlo al publico esas se instala
+
+        dependencias de desarrollo :solamente localmente y mientras desarrollas el proyecto
+
+    dependencia de desarrollo
+
+        npm install sass --save-dev
+
+
+NOTA: Packege-lock.json se recomienda no modificarlo se puede decir que son las dependencias de las dependencias
+
+
+para compartir proyectos puedes eliminar  node_modules
+
+para volver a tener las carpeta node_modules
+
+    npm i
+    npm install
+
+
+
+compilar sass con npm
+
+    1. crear carpeta ejemplo src
+        2. carpeta dentro de ella scss
+            3. crear app.scss main
+    en json package.json
+
+                    "scripts": {
+                "sass": "sass --watch src/scss:build/css"
+                        binario escucha cada rato  ubicación/ destino
+            }
+
+    para ejecutarlo
+
+            npm run nombre de escribir
+
+            npm run sass
+
+            cualquier cambia sin --watch se necesita compilar cada rato
+
+
+Crear variables en sass
+    $rojo: red;
+
+
+
+
+usando gulp y creando el archivo gulpfile
+
+
+para usar gulp se necesita tener instalado global y local
+
+ejecutar powershell como administrador
+
+    npm install -g gulp  modo global
+
+    para comprobar usamos gulp -v
+
+
+para local desde visual code
+
+    npm  install --save-dev gulp
+
+
+
+Crear el archivo gulpfile.js
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// // para finalizar tarea callback
+// // con done
+// function tarea( done) {
+//     console.log('Desde la primera tarea');
+//     done();
+// }
+
+// function tarea2(done) {
+//     console.log('desde la segunda tarea');
+//     done();
+// }
+
+
+
+// // para hacer la tarea disponible para ejecutar
+
+// exports.tarea = tarea;
+// exports.tarea2 = tarea2;
+
+// compilar css
+
+// api
+// retorna mas de una función
+const  {src, dest, watch} = require('gulp');
+
+// para una sola función
+// pasa solucionar
+// const sass = require('gulp-sass')(require('sass'));
+
+// [21:32:15] The following tasks did not complete: css
+// [21:32:15] Did you forget to signal async completion?
+const sass = require('gulp-sass')(require('sass'));
+
+// evitar que se detenga el proceso si aparece un error
+const plumber = require('gulp-plumber');
+
+
+function css(done) {
+    // identificar el archivo .scss a compilar
+    // pipe lo que hace manda a llamar la siguiente acción
+
+
+    // para que escuche todos los cambios que se haga en cualquier cualquier archivo
+    // se hará de manera recursiva
+    src('src/scss/**/*.scss')
+        .pipe(plumber())
+        .pipe(sass())// compilarlo
+        .pipe(dest('build/css')) // almacenar
+    done();
+}
+
+
+// para usar el watch en pocas palabras cuando modifiques el archivo
+// scss se compila automáticamente
+function dev1(done) {
+    // ubicación , función a ejecutar
+    watch('src/scss/**/*.scss', css);
+    done();
+}
+
+exports.css = css;
+exports.dev1 = dev1;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+mandar a llamar la función es
+
+    gulp nombre_de_tarea
+
+
+ahora vemos con que dependencia usaremos para compilar sass
+
+
+    npm install --save-dev gulp-sass 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+crear imágenes webp
+
+npm install --save-dev gulp-webp
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+aligerar imágenes
+
+
+el @ se usa una version especifica
+npm install --save-dev gulp-imagemin@7.1.0
+
+npm install --save-dev gulp-cache
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+crear imágenes Avif
+
+npm install --save-dev gulp-avif
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
