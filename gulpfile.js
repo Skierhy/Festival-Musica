@@ -18,11 +18,11 @@
 // compilar css
 
 // api
-// retorna mas de una funcion
+// retorna mas de una función
 const { src, dest, watch, parallel } = require("gulp");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CSS
-// para una sola funcion
+// para una sola función
 // pasa solucionar
 // const sass = require('gulp-sass')(require('sass'));
 
@@ -33,12 +33,12 @@ const sass = require("gulp-sass")(require("sass"));
 // evitar que se detenga el proceso si aparece un error
 const plumber = require("gulp-plumber");
 
-// mejorar codigo css
+// mejorar código css
 // no usa gulp usa postcss
 // este lo que hace hace que funcione en el navegador que tu digas
-// usa las ultimas tecnologias y tal vez no fucione en otros navegadores viejos
+// usa las ultimas tecnologías y tal vez no funcione en otros navegadores viejos
 const autoprefixer = require("autoprefixer");
-// comprime el codigo
+// comprime el código
 const cssnano = require("cssnano");
 const postcss = require("gulp-postcss");
 // uso de npm i --save-dev gulp-sourcemaps
@@ -56,80 +56,80 @@ const avif = require("gulp-avif");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function css(done) {
-  // identificar el archivo .scss a compilar
-  // pipe lo que hace manda a llamar la siguiente accion
+	// identificar el archivo .scss a compilar
+	// pipe lo que hace manda a llamar la siguiente acción
 
-  // para que escuche todos los cambios que se haga en cualquier cualquier archivo
-  // se hara de manera recursiva
-  src("src/scss/**/*.scss")
-    // sourcemaps
-    .pipe(sourcemaps.init())
-    //////////////
-    .pipe(plumber())
-    .pipe(sass()) // compilarlo
-    ///////////////////////////////////////////
-    // mejorar de css
-    .pipe(postcss([autoprefixer(), cssnano()]))
-    // sourcemaps
-    // para  se usara el . para que sea la misma ubicacion
-    .pipe(sourcemaps.write("."))
-      //////////////
-      .pipe(dest("build/css")); // almacenar
-  done();
+	// para que escuche todos los cambios que se haga en cualquier cualquier archivo
+	// se hara de manera recursiva
+	src("src/scss/**/*.scss")
+		// sourcemaps
+		.pipe(sourcemaps.init())
+		//////////////
+		.pipe(plumber())
+		.pipe(sass()) // compilarlo
+		///////////////////////////////////////////
+		// mejorar de css
+		.pipe(postcss([autoprefixer(), cssnano()]))
+		// sourcemaps
+		// para  se usara el . para que sea la misma ubicación
+		.pipe(sourcemaps.write("."))
+		//////////////
+		.pipe(dest("build/css")); // almacenar
+	done();
 }
 function imagenes(done) {
-  const opciones = {
-    optimizationLevel: 3,
-  };
+	const opciones = {
+		optimizationLevel: 3,
+	};
 
-  src("src/img/**/*.{png,jpg}")
-    .pipe(cache(imagemin(opciones)))
-    .pipe(dest("build/img"));
-  done();
+	src("src/img/**/*.{png,jpg}")
+		.pipe(cache(imagemin(opciones)))
+		.pipe(dest("build/img"));
+	done();
 }
 
 function versionWebp(done) {
-  // parámetros que usa webp gulp
-  const opciones = {
-    // calidad 0 - 100
-    quality: 50,
-  };
-  // lo que hace los ** buscar todas las carpetas
-  // * el archivo
-  // {}mas de un formato
-  src("src/img/**/*.{png,jpg}").pipe(webp(opciones)).pipe(dest("build/img"));
-  done();
+	// parámetros que usa webp gulp
+	const opciones = {
+		// calidad 0 - 100
+		quality: 50,
+	};
+	// lo que hace los ** buscar todas las carpetas
+	// * el archivo
+	// {}mas de un formato
+	src("src/img/**/*.{png,jpg}").pipe(webp(opciones)).pipe(dest("build/img"));
+	done();
 }
 
 function versionAvif(done) {
-  // parámetros que usa webp gulp
-  const opciones = {
-    // calidad 0 - 100
-    quality: 50,
-  };
-  // lo que hace los ** buscar todas las carpetas
-  // * el archivo
-  // {}mas de un formato
-  src("src/img/**/*.{png,jpg}").pipe(avif(opciones)).pipe(dest("build/img"));
-  done();
+	// parámetros que usa webp gulp
+	const opciones = {
+		// calidad 0 - 100
+		quality: 50,
+	};
+	// lo que hace los ** buscar todas las carpetas
+	// * el archivo
+	// {}mas de un formato
+	src("src/img/**/*.{png,jpg}").pipe(avif(opciones)).pipe(dest("build/img"));
+	done();
 }
 
 function javascript(done) {
-  src("src/js/**/*.js")
-    .pipe(sourcemaps.init())
-    .pipe(terser())
-    .pipe(sourcemaps.write("."))
-    .pipe(dest("build/js"));
-  done();
+	src("src/js/**/*.js")
+		.pipe(sourcemaps.init())
+		.pipe(terser())
+		.pipe(sourcemaps.write("."))
+		.pipe(dest("build/js"));
+	done();
 }
 
 // para usar el watch en pocas palabras cuando modifiques el archivo
-// scss se compila automaticamente
+// scss se compila automáticamente
 function dev1(done) {
-  // ubicacion , funcion a ejecutar
-  watch("src/scss/**/*.scss", css);
-  watch("src/js/**/*.js", javascript);
-  done();
+	// ubicacion , función a ejecutar
+	watch("src/scss/**/*.scss", css);
+	watch("src/js/**/*.js", javascript);
+	done();
 }
 // se puede hacer tareas en serie
 // primero empieza una tarea y después otra
