@@ -244,3 +244,89 @@ crear imágenes Avif
 npm install --save-dev gulp-avif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+NPX gulp Tarea
+
+
+NPX: sirve para cuando no se instala globalmente
+NPX sirve para cuando no se instala localmente
+
+
+gulp es el binario para ejecutar
+
+
+Tarea es exports.Tarea es llamar la funcion
+
+
+callback
+
+function nombre (callback) {
+    console.log('Hola');
+    avisa que la tarea ha terminado
+    callback();
+}
+
+
+function nombre (done) {
+    console.log('Hola');
+    avisa que la tarea ha terminado
+    done();
+}
+
+lado izquierdo es como se manda a llamar
+exports.nombre = nombre;
+
+
+NPX gulp nombre
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+npm
+package.json
+
+"scripts": {
+    "sass": "sass --watch src/scss:build/css"
+  },
+
+
+terminal
+
+npm run sass
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+el uso de gulp a secas en la termina algunas veces en windows da problemas
+
+
+npx gulp (nombre de la tarea)
+sin parentesis
+
+ejemplo
+npx gulp Tarea
+
+
+
+
+npm
+
+npm run tarea
+
+json
+
+"scripts": {
+    "tarea": "gulp tarea"
+  }

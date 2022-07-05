@@ -19,6 +19,7 @@
 
 // api
 // retorna mas de una función
+// extraer la función de una función
 const { src, dest, watch, parallel } = require("gulp");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CSS
@@ -61,7 +62,9 @@ function css(done) {
 
 	// para que escuche todos los cambios que se haga en cualquier cualquier archivo
 	// se hará de manera recursiva
+	// donde esta los archivos
 	src("src/scss/**/*.scss")
+		// pipe lo que hace es ejecutar la siguiente función
 		// sourcemaps
 		.pipe(sourcemaps.init())
 		//////////////
@@ -75,7 +78,7 @@ function css(done) {
 		.pipe(sourcemaps.write("."))
 		//////////////
 		.pipe(dest("build/css")); // almacenar
-	done();
+	done(); //callback para finalizar la tarea
 }
 function imagenes(done) {
 	const opciones = {
@@ -127,6 +130,7 @@ function javascript(done) {
 // scss se compila automáticamente
 function dev1(done) {
 	// ubicación , función a ejecutar
+	// no se necesita los paréntesis
 	watch("src/scss/**/*.scss", css);
 	watch("src/js/**/*.js", javascript);
 	done();
